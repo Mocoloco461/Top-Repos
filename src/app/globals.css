@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0d1117] text-[#f0f6fc] antialiased selection:bg-[#58a6ff]/30 min-h-screen;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.dir-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Hide scrollbar for clean horizontal filter bar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe area padding for iOS notch, status bar clock & home bar */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 1.5rem);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}

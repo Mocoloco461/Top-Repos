@@ -1,0 +1,73 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
+}
+
+model Repository {
+  id                String       @id @default(uuid())
+  owner             String
+  name              String
+  fullName          String       @unique
+  description       String?
+  language          String?
+  languageColor     String?
+  stars             Int          @default(0)
+  starsToday        Int          @default(0)
+  forks             Int          @default(0)
+  avatarUrl         String?
+  bannerUrl         String?
+  url               String
+  readmeContent     String?
+  readmeHash        String?
+
+  hebrewDescription String?
+  hebrewReadme      String?
+  isTranslating     Boolean      @default(false)
+  translatedAt      DateTime?
+
+  trendingSince     String       @default("daily")
+  lastScrapedAt     DateTime     @default(now())
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  listItems         RepoInList[]
+
+  @@index([trendingSince])
+  @@index([fullName])
+}
+
+model List {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  description String?
+  webhookUrl  String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  items       RepoInList[]
+}
+
+model RepoInList {
+  id           String     @id @default(uuid())
+  listId       String
+  repositoryId String
+  addedAt      DateTime   @default(now())
+
+  list         List       @relation(fields: [listId], references: [id], onDelete: Cascade)
+  repository   Repository @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+
+  @@unique([listId, repositoryId])
+}
+
+model AppSettings {
+  id                     String   @id @default("global")
+  encryptedOpenRouterKey String?
+  openRouterModel        String   @default("google/gemini-2.5-flash")
+  autoTranslate          Boolean  @default(false)
+  updatedAt              DateTime @updatedAt
+}
