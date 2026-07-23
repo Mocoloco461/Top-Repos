@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   title: 'Trending - GitHub Explorer',
   description: 'Custom GitHub Trending Explorer & Repository Manager',
   manifest: '/manifest.json',
+  icons: {
+    icon: '/icon-192.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',

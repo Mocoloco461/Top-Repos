@@ -1,6 +1,16 @@
-# Top Repos 🚀
+<div align="center">
+  <img src="public/icon-192.png" width="128" height="128" alt="Top Repos Icon" style="border-radius: 24px;" />
+  <h1>Top Repos 🚀</h1>
+  <p>A modern Next.js dashboard for exploring GitHub Trending repositories with automated AI translations to Hebrew and custom repository lists management.</p>
+</div>
 
-A modern Next.js dashboard for exploring GitHub Trending repositories with automated AI translations to Hebrew and custom repository lists management.
+<p align="center">
+  <img src="public/screenshots/explore.png" width="19%" alt="Explore Feed" />
+  <img src="public/screenshots/lists.png" width="19%" alt="Custom Lists" />
+  <img src="public/screenshots/add-to-list.png" width="19%" alt="Add to List Modal" />
+  <img src="public/screenshots/list-settings.png" width="19%" alt="List Settings" />
+  <img src="public/screenshots/settings.png" width="19%" alt="App Settings" />
+</p>
 
 ---
 
