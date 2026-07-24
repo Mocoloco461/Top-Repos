@@ -55,6 +55,15 @@ Run the application and PostgreSQL database with Docker Compose:
 docker-compose up -d
 ```
 
+log into the continer:
+```bash
+docker exec -it {continer_id} /bin/sh
+```
+
+run that commend for the first time.
+```bash
+npx prisma db push
+```
 ---
 
 ## 🛠️ Tech Stack
